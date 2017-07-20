@@ -1,0 +1,18 @@
+<div>
+  <h1>Seasons</h1>
+  <table *ngIf="seasons && seasons.length">
+    <thead>
+      <tr>
+        <th>Year</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let season of seasons | seasonsSort:listFilter">
+        <a routerLink="/seasons/{{season.season}}"><td>{{season.season}}</td></a>
+      </tr>
+    </tbody>
+  </table>
+  <div *ngIf="error">
+    {{error}}
+  </div>
+</div>

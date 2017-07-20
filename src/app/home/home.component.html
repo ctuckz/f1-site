@@ -1,0 +1,11 @@
+<div>
+    <div class="col-md-10 col-md-offset-1">
+        <h1>
+            <b>Next Race:</b> {{nextRace != null ? nextRace.raceName : "Loading..."}}       
+        </h1>
+        <div *ngIf="nextRace">
+            {{nextRace.Circuit.circuitName}}
+            <h5>{{nextRace.getLocalTime() | date:"medium"}}</h5>
+        </div>
+    </div>
+</div>
