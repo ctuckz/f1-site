@@ -3,6 +3,9 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { SeasonsComponent } from './seasons.component';
 import { StandingsComponent } from "../standings/standings.component";
 import { HttpModule } from "@angular/http";
+import { SeasonsSortPipe } from "./seasons-sort.pipe";
+import { RouterTestingModule } from "@angular/router/testing";
+import { StandingsSortPipe } from "../standings/standings.pipe";
 
 describe('SeasonsComponent', () => {
     let component: SeasonsComponent;
@@ -10,8 +13,8 @@ describe('SeasonsComponent', () => {
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
-            declarations: [SeasonsComponent, StandingsComponent],
-            imports: [HttpModule]
+            declarations: [SeasonsComponent, StandingsComponent, SeasonsSortPipe, StandingsSortPipe],
+            imports: [HttpModule, RouterTestingModule]
         })
             .compileComponents();
     }));
