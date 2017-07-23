@@ -3,9 +3,25 @@
         <h1>
             <b>Next Race:</b> {{nextRace != null ? nextRace.raceName : "Loading..."}}       
         </h1>
+        <div *ngIf="errorText">
+            {{errorText}}
+        </div>
+
+        <!-- <div *ngIf="!nextRace">
+            Loading...
+        </div> -->
         <div *ngIf="nextRace">
             {{nextRace.Circuit.circuitName}}
             <h5>{{nextRace.getLocalTime() | date:"medium"}}</h5>
+            <div *ngIf="mapSource">
+                <iframe
+                    width="1200"
+                    height="700"
+                    frameborder="0" style="border:0"
+                    [src]="getMapSource()"
+                    allowfullscreen>
+                </iframe>
+            </div>
         </div>
     </div>
 </div>
