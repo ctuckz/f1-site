@@ -12,28 +12,28 @@ import { StandingsSortPipe } from './standings/standings.pipe';
 import { HomeComponent } from './home/home.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    SeasonsComponent,
-    SeasonsSortPipe,
-    SeasonComponent,
-    StandingsComponent,
-    StandingsSortPipe,
-    HomeComponent
-  ],
-  imports: [
-    BrowserModule,
-    HttpModule,
-    RouterModule.forRoot(
-      [
-        { path: "seasons/:season", component: SeasonComponent },
-        { path: "seasons", component: SeasonsComponent },
-        { path: "", component: HomeComponent },
-        { path: "**", redirectTo: "", pathMatch: "full" }
-      ]
-    )
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        SeasonsComponent,
+        SeasonsSortPipe,
+        SeasonComponent,
+        StandingsComponent,
+        StandingsSortPipe,
+        HomeComponent
+    ],
+    imports: [
+        BrowserModule,
+        HttpModule,
+        RouterModule.forRoot(
+            [
+                { path: "seasons/:season", component: SeasonComponent },
+                { path: "seasons", component: SeasonsComponent },
+                { path: "", component: HomeComponent },
+                { path: "**", redirectTo: "", pathMatch: "full" }
+            ]
+        )
+    ],
+    providers: [],
+    bootstrap: [AppComponent]
 })
 export class AppModule { }

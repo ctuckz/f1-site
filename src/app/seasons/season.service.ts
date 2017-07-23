@@ -8,38 +8,31 @@ import "rxjs/add/observable/concat";
 import "rxjs/add/observable/empty";
 import "rxjs/add/observable/of";
 import { ErrorObservable } from "rxjs/observable/ErrorObservable";
+import { PagedService } from "../util/PagedService";
 
 @Injectable()
-export class SeasonService {
+export class SeasonService extends PagedService<ISeason[]> {
 
-  private _seasonsUrl = "http://ergast.com/api/f1/seasons.json";
+    protected _url: string = "http://ergast.com/api/f1/seasons.json";
 
-  constructor(private _http: Http) { }
+    constructor(_http: Http) {
+        super(_http);
+    }
 
-  getPage(offset: number): Observable<ISeason[]> {
-    let queryString: string = "?offset=" + offset;
-    return this._http.get(this._seasonsUrl + queryString)
-      .map((response: Response) => {
+    protected mapFunction(response: Response, index: number): ISeason[] {
         let seasonResponse: SeasonResponse
-          = new SeasonResponse(parseInt(response.json().MRData.limit),
-            parseInt(response.json().MRData.offset),
-            parseInt(response.json().MRData.total),
-            response.json().MRData.SeasonTable.Seasons);
+            = new SeasonResponse(parseInt(response.json().MRData.limit),
+                parseInt(response.json().MRData.offset),
+                parseInt(response.json().MRData.total),
+                response.json().MRData.SeasonTable.Seasons);
 
         return seasonResponse.seasons;
-      })
-      .catch(this.handleError);
-  }
-
-  private handleError(error: Response): ErrorObservable {
-    console.error(error);
-    return Observable.throw(error.text || "Unknown Server Error");
-  }
+    }
 }
 
 class SeasonResponse {
-  constructor(public limit: number,
-    public offset: number,
-    public total: number,
-    public seasons: ISeason[]) { }
+    constructor(public limit: number,
+        public offset: number,
+        public total: number,
+        public seasons: ISeason[]) { }
 }

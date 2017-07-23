@@ -5,33 +5,28 @@ import { IStanding } from "../standings/standing";
 import { ErrorObservable } from "rxjs/observable/ErrorObservable";
 import "rxjs/add/operator/map";
 import "rxjs/add/operator/catch";
+import { PagedService } from "../util/PagedService";
 
 @Injectable()
-export class SeasonStandingsService {
+export class SeasonStandingsService extends PagedService<IStanding[]> {
 
-  private standingUrlBase: string = "http://ergast.com/api/f1/";
-  private standingUrlEnd: string = "/driverStandings.json";
+    protected _url: string;
 
-  constructor(private _http: Http) { }
+    private standingUrlBase: string = "http://ergast.com/api/f1/";
+    private standingUrlEnd: string = "/driverStandings.json";
 
-  getPage(season: string, offset: number): Observable<IStanding[]> {
-    let url:string = this.standingUrlBase + season + this.standingUrlEnd;
-    let queryString: string = "?offset=" + offset;
+    constructor(http: Http,
+        season: string) {
+        super(http);
+        this._url = this.standingUrlBase + season + this.standingUrlEnd;
+    }
 
-    return this._http.get(url + queryString)
-      .map((response: Response) => {
-        if(response.json().MRData.StandingsTable.StandingsLists[0]){
-          return <IStanding[]>response.json().MRData.StandingsTable.StandingsLists[0].DriverStandings;
+    protected mapFunction(response: Response, index: number): IStanding[] {
+        if (response.json().MRData.StandingsTable.StandingsLists[0]) {
+            return <IStanding[]>response.json().MRData.StandingsTable.StandingsLists[0].DriverStandings;
         }
         else {
-          return new Array<IStanding>(0);
+            return new Array<IStanding>(0);
         }
-      })
-      .catch(this.handleError);
-  }
-
-  private handleError(error: Response): ErrorObservable {
-    console.error(error);
-    return Observable.throw(error.text || "Unknown Server Error");
-  }
+    }
 }

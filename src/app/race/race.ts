@@ -22,7 +22,7 @@ export class Race implements IRace {
         public time: string) { }
 
     getLocalTime(): string {
-        let date:Date = new Date(this.date + " " + this.time);
+        let date: Date = new Date(this.date + " " + this.time);
         return date.toString();
     }
 }

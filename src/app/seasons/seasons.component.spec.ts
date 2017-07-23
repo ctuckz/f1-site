@@ -5,24 +5,24 @@ import { StandingsComponent } from "../standings/standings.component";
 import { HttpModule } from "@angular/http";
 
 describe('SeasonsComponent', () => {
-  let component: SeasonsComponent;
-  let fixture: ComponentFixture<SeasonsComponent>;
+    let component: SeasonsComponent;
+    let fixture: ComponentFixture<SeasonsComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [SeasonsComponent, StandingsComponent],
-      imports: [HttpModule]
-    })
-      .compileComponents();
-  }));
+    beforeEach(async(() => {
+        TestBed.configureTestingModule({
+            declarations: [SeasonsComponent, StandingsComponent],
+            imports: [HttpModule]
+        })
+            .compileComponents();
+    }));
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(SeasonsComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+    beforeEach(() => {
+        fixture = TestBed.createComponent(SeasonsComponent);
+        component = fixture.componentInstance;
+        fixture.detectChanges();
+    });
 
-  it('should be created', () => {
-    expect(component).toBeTruthy();
-  });
+    it('should be created', () => {
+        expect(component).toBeTruthy();
+    });
 });
