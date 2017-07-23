@@ -7,6 +7,9 @@ import { SeasonsSortPipe } from "./seasons/seasons-sort.pipe";
 import { SeasonComponent } from "./seasons/season.component";
 import { StandingsComponent } from "./standings/standings.component";
 import { HttpModule } from "@angular/http";
+import { RouterTestingModule } from "@angular/router/testing";
+import { StandingsSortPipe } from "./standings/standings.pipe";
+import { HomeComponent } from "./home/home.component";
 
 describe('AppComponent', () => {
     beforeEach(async(() => {
@@ -16,9 +19,11 @@ describe('AppComponent', () => {
                 SeasonsComponent,
                 SeasonsSortPipe,
                 SeasonComponent,
-                StandingsComponent
+                StandingsComponent,
+                StandingsSortPipe,
+                HomeComponent
             ],
-            imports: [HttpModule]
+            imports: [HttpModule, RouterTestingModule]
         }).compileComponents();
     }));
 
