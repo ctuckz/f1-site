@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { StandingsComponent } from './standings.component';
+import { StandingsSortPipe } from "./standings.pipe";
 
 describe('StandingsComponent', () => {
     let component: StandingsComponent;
@@ -8,7 +9,7 @@ describe('StandingsComponent', () => {
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
-            declarations: [StandingsComponent]
+            declarations: [StandingsComponent, StandingsSortPipe]
         })
             .compileComponents();
     }));
