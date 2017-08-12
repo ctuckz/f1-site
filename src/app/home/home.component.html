@@ -1,27 +1,34 @@
 <div>
-    <div class="col-md-10 col-md-offset-1">
-        <h1>
-            <b>Next Race:</b> {{nextRace != null ? nextRace.raceName : "Loading..."}}       
-        </h1>
-        <div *ngIf="errorText">
-            {{errorText}}
-        </div>
+    <div *ngIf="errorText">
+        {{errorText}}
+    </div>
 
-        <!-- <div *ngIf="!nextRace">
-            Loading...
-        </div> -->
-        <div *ngIf="nextRace">
-            {{nextRace.Circuit.circuitName}}
-            <h5>{{nextRace.getLocalTime() | date:"medium"}}</h5>
-            <div *ngIf="mapSource">
-                <iframe
-                    width="1200"
-                    height="700"
-                    frameborder="0" style="border:0"
-                    [src]="getMapSource()"
-                    allowfullscreen>
-                </iframe>
+    <div class="col-md-offset-1 container-fluid">
+        <div class="col-md-5 text-center row">
+            <h1>
+                <b>Next Race:</b> {{nextRace != null ? nextRace.raceName : "Loading..."}}       
+            </h1>
+
+            <div *ngIf="nextRace">
+                {{nextRace.Circuit.circuitName}}
+                <h5>{{nextRace.getLocalTime() | date:"medium"}}</h5>
+                <br />
+                <div *ngIf="mapSource">
+                    <iframe class="col-md-12 row"
+                        height="400px"
+                        frameborder="0" style="border:0"
+                        [src]="getMapSource()"
+                        allowfullscreen>
+                    </iframe>
+                </div>
             </div>
+        </div>
+        <div class="col-md-5 row">
+            <h1 class="text-center">Standings</h1>
+
+            <app-standings-chart *ngIf="currentSeasonStandings" [standings]="currentSeasonStandings"></app-standings-chart>
+            <div *ngIf="!currentSeasonStandings">Loading...</div>
+            
         </div>
     </div>
 </div>

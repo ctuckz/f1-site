@@ -10,6 +10,7 @@ import { SeasonComponent } from './seasons/season.component';
 import { StandingsComponent } from './standings/standings.component';
 import { StandingsSortPipe } from './standings/standings.pipe';
 import { HomeComponent } from './home/home.component';
+import { StandingsChartComponent } from './standings/standings-chart/standings-chart.component';
 
 @NgModule({
     declarations: [
@@ -18,8 +19,10 @@ import { HomeComponent } from './home/home.component';
         SeasonsSortPipe,
         SeasonComponent,
         StandingsComponent,
+        StandingsChartComponent,
         StandingsSortPipe,
-        HomeComponent
+        HomeComponent,
+        StandingsChartComponent
     ],
     imports: [
         BrowserModule,
