@@ -30,8 +30,9 @@ export class SeasonComponent implements OnInit {
         this._activatedRoute.paramMap
             .map(params => params.get("season"))
             .subscribe(season => {
-                let standingsService: SeasonStandingsService = new SeasonStandingsService(this._http, season);
+                this.season = season;
 
+                let standingsService: SeasonStandingsService = new SeasonStandingsService(this._http, season);
                 let pagedServiceSubscription: PagedServiceSubscription<IStanding[]>
                     = new PagedServiceSubscription<IStanding[]>(standingsService, (standings: IStanding[]) => this.setStandings(standings), (error: any) => this.handleError(error));
                 pagedServiceSubscription.loadPage(0);

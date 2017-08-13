@@ -1,3 +1,6 @@
+<div *ngIf="season" class="text-center">
+    <h1>{{season}}</h1>
+</div>
 <div *ngIf="seasonStandings" class="container-fluid row" style="height:100vh">
     <app-standings [standings]="seasonStandings" class="col-md-4"></app-standings>
     <app-standings-chart [standings]="seasonStandings" class="col-md-8"></app-standings-chart>
