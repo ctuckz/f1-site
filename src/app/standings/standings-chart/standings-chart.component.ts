@@ -60,6 +60,7 @@ export class StandingsChartComponent implements OnChanges {
     }
 
     private getTeamColor(standing: IStanding): string {
+        // TODO: Support past and future teams - find a service to download colors from
         if (!standing) {
             return "rgba(0, 0, 0, 0.2)"
         }
