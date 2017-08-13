@@ -41,7 +41,14 @@ export class StandingsChartComponent implements OnChanges {
                     yAxes: [{
                         ticks: {
                             fontFamily: "'Lucida Console', Monaco, monospace"
-
+                        },
+                        gridLines: {
+                            color: "rgba(255,255,255,0.1)"
+                        }
+                    }],
+                    xAxes: [{
+                        gridLines: {
+                            color: "rgba(255,255,255,0.1)"
                         }
                     }]
                 },
@@ -96,10 +103,10 @@ export class StandingsChartComponent implements OnChanges {
         if (team == "sauber") {
             return "rgba(0,110,255,0.9)";
         }
-        if(team == "lotus_f1"){
+        if (team == "lotus_f1") {
             return "rgba(255,184,0,0.9)";
         }
-        if(team == "marussia"){
+        if (team == "marussia") {
             return "rgba(110,0,0,0.9)";
         }
 
