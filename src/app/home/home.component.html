@@ -3,7 +3,7 @@
         {{errorText}}
     </div>
 
-    <div class="col-md-offset-1 container-fluid" style="height:100vh">
+    <div class="col-md-offset-1 container-fluid">
         <div class="row">
             <div class="col-md-5 text-center">
                 <h1>
@@ -20,17 +20,16 @@
             </div>
         </div>
 
-        <div class="row" style="height:400px">
-            <div *ngIf="nextRace" class="col-md-5">
-
+        <div class="row">
+            <div class="col-md-5" >
                 <div *ngIf="mapSource">
-                    <iframe class="col-md-12 row" height="400px" frameborder="0" style="border:0" [src]="getMapSource()" allowfullscreen>
+                    <iframe class="col-md-12" height="400px" frameborder="0" style="border:0" [src]="getMapSource()" allowfullscreen>
                     </iframe>
                 </div>
             </div>
 
-            <div class="col-md-5">
-                <app-standings-chart *ngIf="currentSeasonStandings" [standings]="currentSeasonStandings"></app-standings-chart>
+            <div class="col-md-6">
+                <app-standings-chart *ngIf="currentSeasonStandings" [standings]="currentSeasonStandings" height="400px"></app-standings-chart>
                 <div *ngIf="!currentSeasonStandings" class="text-center"><i class="glyphicon-hourglass"></i></div>
             </div>
         </div>
