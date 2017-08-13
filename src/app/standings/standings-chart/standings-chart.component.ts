@@ -27,7 +27,7 @@ export class StandingsChartComponent implements OnChanges {
         var myChart = new Chart(ctx, {
             type: 'horizontalBar',
             data: {
-                labels: this.standings.map(s => s.positionText + " " + s.Driver.code),
+                labels: this.standings.map(s => s.positionText + " " + this.getName(s)),
                 datasets: [{
                     label: 'Points',
                     data: this.standings.map(s => s.points),
@@ -64,6 +64,21 @@ export class StandingsChartComponent implements OnChanges {
                 }
             }
         });
+    }
+
+    private getName(standing: IStanding): string {
+        if (!standing || !standing.Driver) {
+            return "error";
+        }
+
+        if (standing.Driver.code) {
+            return standing.Driver.code;
+        }
+        if (standing.Driver.familyName) {
+            return standing.Driver.familyName;
+        }
+
+        return standing.Driver.driverId
     }
 
     private getTeamColor(standing: IStanding): string {
