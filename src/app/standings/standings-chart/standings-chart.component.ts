@@ -83,7 +83,7 @@ export class StandingsChartComponent implements OnChanges {
         if (team == "mclaren") {
             return "rgba(255,123,8,0.9)";
         }
-        if (team == "torro_rosso") {
+        if (team == "torro_rosso" || team == "toro_rosso") {
             return "rgba(0,0,255,0.9)";
         }
         if (team == "haas") {
@@ -94,6 +94,12 @@ export class StandingsChartComponent implements OnChanges {
         }
         if (team == "sauber") {
             return "rgba(0,110,255,0.9)";
+        }
+        if(team == "lotus_f1"){
+            return "rgba(255,184,0,0.9)";
+        }
+        if(team == "marussia"){
+            return "rgba(110,0,0,0.9)";
         }
 
         return "rgba(0, 0, 0, 0.2)"

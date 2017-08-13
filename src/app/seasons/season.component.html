@@ -1,1 +1,4 @@
-<app-standings [standings]='seasonStandings'></app-standings>
+<div class="container-fluid row" style="height:100vh">
+    <app-standings [standings]="seasonStandings" class="col-md-4"></app-standings>
+    <app-standings-chart [standings]="seasonStandings" class="col-md-8"></app-standings-chart>
+</div>

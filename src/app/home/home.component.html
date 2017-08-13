@@ -1,34 +1,37 @@
-<div>
+<div style="height:100vh">
     <div *ngIf="errorText">
         {{errorText}}
     </div>
 
     <div class="col-md-offset-1 container-fluid">
-        <div class="col-md-5 text-center row">
-            <h1>
-                <b>Next Race:</b> {{nextRace != null ? nextRace.raceName : "Loading..."}}       
-            </h1>
-
-            <div *ngIf="nextRace">
-                {{nextRace.Circuit.circuitName}}
+        <div class="row">
+            <div class="col-md-5 text-center">
+                <h1>
+                    <b>Next Race:</b> {{nextRace != null ? nextRace.raceName : "Loading..."}}
+                </h1>
+                <div>{{nextRace.Circuit.circuitName}}</div>
                 <h5>{{nextRace.getLocalTime() | date:"medium"}}</h5>
                 <br />
+            </div>
+            <div class="col-md-5">
+                <h1 class="text-center">Standings</h1>
+            </div>
+        </div>
+
+        <div class="row">
+            <div *ngIf="nextRace" class="col-md-5">
+
                 <div *ngIf="mapSource">
-                    <iframe class="col-md-12 row"
-                        height="400px"
-                        frameborder="0" style="border:0"
-                        [src]="getMapSource()"
-                        allowfullscreen>
+                    <iframe class="col-md-12 row" height="400px" frameborder="0" style="border:0" [src]="getMapSource()" allowfullscreen>
                     </iframe>
                 </div>
             </div>
-        </div>
-        <div class="col-md-5 row">
-            <h1 class="text-center">Standings</h1>
 
-            <app-standings-chart *ngIf="currentSeasonStandings" [standings]="currentSeasonStandings"></app-standings-chart>
-            <div *ngIf="!currentSeasonStandings">Loading...</div>
-            
+            <div class="col-md-5">
+                <app-standings-chart *ngIf="currentSeasonStandings" [standings]="currentSeasonStandings"></app-standings-chart>
+                <div *ngIf="!currentSeasonStandings" class="text-center"><i class="glyphicon-hourglass"></i></div>
+            </div>
+
         </div>
     </div>
 </div>
