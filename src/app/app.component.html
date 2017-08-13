@@ -7,11 +7,28 @@
                     <a class="navbar-brand" routerLink="/">F1 Stats</a>
                 </div>
             </div>
+
             <ul class="nav navbar-nav">
-                <li><a routerLink="/seasons">Seasons</a></li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        Seasons <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li *ngFor="let season of seasons | seasonsSort:listFilter">
+                            <a routerLink="/seasons/{{season.season}}">
+                                {{season.season}}
+                            </a>
+                        </li>
+                    </ul>
+                </li>
             </ul>
+            
         </div>
     </nav>
+
+    <div class="alert alert-danger" *ngIf="error">
+        {{error}}
+    </div>
 
     <router-outlet></router-outlet>
 

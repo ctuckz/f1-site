@@ -4,7 +4,6 @@ import { HttpModule } from "@angular/http";
 import { RouterModule } from "@angular/router";
 
 import { AppComponent } from './app.component';
-import { SeasonsComponent } from './seasons/seasons.component';
 import { SeasonsSortPipe } from './seasons/seasons-sort.pipe';
 import { SeasonComponent } from './seasons/season.component';
 import { StandingsComponent } from './standings/standings.component';
@@ -15,7 +14,6 @@ import { StandingsChartComponent } from './standings/standings-chart/standings-c
 @NgModule({
     declarations: [
         AppComponent,
-        SeasonsComponent,
         SeasonsSortPipe,
         SeasonComponent,
         StandingsComponent,
@@ -30,7 +28,6 @@ import { StandingsChartComponent } from './standings/standings-chart/standings-c
         RouterModule.forRoot(
             [
                 { path: "seasons/:season", component: SeasonComponent },
-                { path: "seasons", component: SeasonsComponent },
                 { path: "", component: HomeComponent },
                 { path: "**", redirectTo: "", pathMatch: "full" }
             ]
