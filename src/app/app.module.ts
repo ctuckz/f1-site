@@ -2,7 +2,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpModule } from "@angular/http";
 import { RouterModule } from "@angular/router";
-
 import { AppComponent } from './app.component';
 import { SeasonsSortPipe } from './seasons/seasons-sort.pipe';
 import { SeasonComponent } from './seasons/season.component';
