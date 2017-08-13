@@ -3,12 +3,17 @@ import { ISeason } from "./seasons/season";
 import { SeasonService } from "./seasons/season.service";
 import { DriversService } from "./drivers/drivers.service";
 import { IDriver } from "./drivers/driver";
+import { Http } from "@angular/http";
 
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.css'],
-    providers: [SeasonService, DriversService]
+    providers: [SeasonService, {
+        provide: DriversService,
+        useFactory: (http: Http) => new DriversService(http, "current"),
+        deps: [Http]
+    }]
 })
 export class AppComponent implements OnInit {
     title = 'app';

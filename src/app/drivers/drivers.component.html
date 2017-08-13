@@ -1,0 +1,30 @@
+<div class="container-fluid" id="top">
+    <div class="col-md-offset-1" style="padding-bottom:100px">
+        <div class="row text-center">
+            <h1>Driver List</h1>
+        </div>
+        <div class="row text-center">
+            <div class="btn-group">
+                <a *ngFor="let letter of letters" [class]="((!driverLetters || driverLetters.indexOf(letter) == -1)  ? 'disabled' : '') + ' btn btn-default'"
+                    [href]="'/drivers#' + letter" target="_self">
+                    {{letter}}
+                </a>
+            </div>
+        </div>
+
+        <div class="row">
+            <div *ngFor="let driverLetter of driverLetters">
+                <h2 [id]="driverLetter">{{driverLetter}}</h2>
+                <div style="column-count: 5">
+                    <div *ngFor="let driver of drivers | driverAlphaSort">
+                        <div *ngIf="driver.familyName.charAt(0) == driverLetter">
+                            <a>{{driver.givenName + " " + driver.familyName}}</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <a class="btn btn-primary btn-sm button-bottom-fix" href="/drivers#top">Top</a>
+</div>

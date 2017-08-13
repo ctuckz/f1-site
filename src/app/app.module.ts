@@ -9,6 +9,8 @@ import { StandingsComponent } from './standings/standings.component';
 import { StandingsSortPipe } from './standings/standings.pipe';
 import { HomeComponent } from './home/home.component';
 import { StandingsChartComponent } from './standings/standings-chart/standings-chart.component';
+import { DriversComponent } from './drivers/drivers.component';
+import { DriverAlphaSortPipe } from './drivers/driver-alpha-sort.pipe';
 
 @NgModule({
     declarations: [
@@ -19,7 +21,9 @@ import { StandingsChartComponent } from './standings/standings-chart/standings-c
         StandingsChartComponent,
         StandingsSortPipe,
         HomeComponent,
-        StandingsChartComponent
+        StandingsChartComponent,
+        DriversComponent,
+        DriverAlphaSortPipe
     ],
     imports: [
         BrowserModule,
@@ -27,6 +31,7 @@ import { StandingsChartComponent } from './standings/standings-chart/standings-c
         RouterModule.forRoot(
             [
                 { path: "seasons/:season", component: SeasonComponent },
+                { path: "drivers", component: DriversComponent },
                 { path: "", component: HomeComponent },
                 { path: "**", redirectTo: "", pathMatch: "full" }
             ]
