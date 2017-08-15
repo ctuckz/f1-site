@@ -28,7 +28,7 @@
                     </a>
                     <ul class="dropdown-menu">
                         <li *ngFor="let driver of drivers">
-                            <a routerLink="#">
+                            <a [routerLink]="'/drivers/' + driver.driverId">
                                 {{driver.givenName + " " + driver.familyName}}
                             </a>
                         </li>

@@ -7,20 +7,20 @@ import { Http, Response } from "@angular/http";
 export class DriversService extends PagedService<IDriver[]> {
     protected _url: string;
 
-    private _noSeasonUrl: string = "http://ergast.com/api/f1/drivers.json";
+    private _noFilterUrl: string = "http://ergast.com/api/f1/drivers.json";
     private _urlBase: string = "http://ergast.com/api/f1/";
     private _urlEnd: string = "/drivers.json";
 
     constructor(http: Http);
-    constructor(http: Http, season: string);
-    constructor(http: Http, season?: string) {
+    constructor(http: Http, filter: string);
+    constructor(http: Http, filter?: string) {
         super(http);
 
-        if(!season || season.length == 0){
-            this._url = this._noSeasonUrl;
+        if(!filter || filter.length == 0){
+            this._url = this._noFilterUrl;
         }
         else{
-            this._url = this._urlBase + season + this._urlEnd;
+            this._url = this._urlBase + filter + this._urlEnd;
         }
      }
 

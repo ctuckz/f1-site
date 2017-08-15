@@ -1,0 +1,30 @@
+<div *ngIf="errorText" class="alert alert-danger">
+    {{errorText}}
+</div>
+<div class="container-fluid" *ngIf="driver">
+    <div class="row col-md-3 col-md-offset-1">
+        <div class="row">
+            <h1 class="text-warning">{{driver.permanentNumber}}</h1>
+            <h1>{{driver.givenName +" " + driver.familyName}}</h1>
+            <img *ngIf="imageUrl" [src]="imageUrl" width="200px" class="col-md-8" />
+
+            <div class="col-md-offset-6">
+                <div *ngIf="!driverStandings"><i class="glyphicon-hourglass"></i></div>
+                <app-standings-chart *ngIf="driverStandigs" [standings]="driverStandings" height="400px"></app-standings-chart>
+            </div>
+        </div>
+        <div class="row">
+            <table class="table">
+                <tr>
+                    <td>Date of Birth</td>
+                    <td>{{driver.dateOfBirth}}</td>
+                </tr>
+                <tr>
+                    <td>Nationality</td>
+                    <td>{{driver.nationality}}</td>
+                </tr>
+            </table>
+        </div>
+
+    </div>
+</div>

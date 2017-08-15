@@ -18,7 +18,7 @@
                 <div style="column-count: 5">
                     <div *ngFor="let driver of drivers | driverAlphaSort">
                         <div *ngIf="driver.familyName.charAt(0) == driverLetter">
-                            <a>{{driver.givenName + " " + driver.familyName}}</a>
+                            <a [routerLink]="'/drivers/' + driver.driverId">{{driver.givenName + " " + driver.familyName}}</a>
                         </div>
                     </div>
                 </div>

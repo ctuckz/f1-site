@@ -5,5 +5,6 @@ export interface IDriver {
     givenName: string,
     familyName: string,
     dateOfBirth: string,
-    nationality: string
+    nationality: string,
+    url: string
 }

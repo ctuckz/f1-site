@@ -11,6 +11,7 @@ import { HomeComponent } from './home/home.component';
 import { StandingsChartComponent } from './standings/standings-chart/standings-chart.component';
 import { DriversComponent } from './drivers/drivers.component';
 import { DriverAlphaSortPipe } from './drivers/driver-alpha-sort.pipe';
+import { DriverComponent } from './drivers/driver.component';
 
 @NgModule({
     declarations: [
@@ -23,7 +24,8 @@ import { DriverAlphaSortPipe } from './drivers/driver-alpha-sort.pipe';
         HomeComponent,
         StandingsChartComponent,
         DriversComponent,
-        DriverAlphaSortPipe
+        DriverAlphaSortPipe,
+        DriverComponent
     ],
     imports: [
         BrowserModule,
@@ -32,6 +34,7 @@ import { DriverAlphaSortPipe } from './drivers/driver-alpha-sort.pipe';
             [
                 { path: "seasons/:season", component: SeasonComponent },
                 { path: "drivers", component: DriversComponent },
+                { path: "drivers/:driver", component: DriverComponent },
                 { path: "", component: HomeComponent },
                 { path: "**", redirectTo: "", pathMatch: "full" }
             ]
