@@ -23,20 +23,21 @@ export class DriverStandingsService {
     }
 
     getDriverStandings(): Observable<IStanding[]> {
-        let cachedStandings: IStanding[] = this._cache.get(this.cacheKey);
-        if(cachedStandings){
-            return Observable.of(cachedStandings);
-        }
+        return Observable.of(new Array<IStanding>(0));
+        // let cachedStandings: IStanding[] = this._cache.get(this.cacheKey);
+        // if(cachedStandings){
+        //     return Observable.of(cachedStandings);
+        // }
 
-        return this._http.get(this.url)
-            .map((response: Response) => {
-                let standings: IStanding[] = new Array<IStanding>(0);
-                for (let driverStandings of response.json().MRData.StandingsTable.StandingsLists) {
-                    standings.push(driverStandings.DriverStandings[0]);
-                }
+        // return this._http.get(this.url)
+        //     .map((response: Response) => {
+        //         let standings: IStanding[] = new Array<IStanding>(0);
+        //         for (let driverStandings of response.json().MRData.StandingsTable.StandingsLists) {
+        //             standings.push(driverStandings.DriverStandings[0]);
+        //         }
 
-                this._cache.add(this.cacheKey, standings);
-                return standings;
-            });
+        //         this._cache.add(this.cacheKey, standings);
+        //         return standings;
+        //     });
     }
 }
