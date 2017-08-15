@@ -23,7 +23,7 @@ export class DriverStandingsService {
     }
 
     getDriverStandings(): Observable<IStanding[]> {
-        return Observable.of(new Array<IStanding>(0));
+        return Observable.of(undefined);
         // let cachedStandings: IStanding[] = this._cache.get(this.cacheKey);
         // if(cachedStandings){
         //     return Observable.of(cachedStandings);
