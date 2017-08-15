@@ -12,6 +12,7 @@ import { StandingsChartComponent } from './standings/standings-chart/standings-c
 import { DriversComponent } from './drivers/drivers.component';
 import { DriverAlphaSortPipe } from './drivers/driver-alpha-sort.pipe';
 import { DriverComponent } from './drivers/driver.component';
+import { TimedCache } from "./util/timed-cache";
 
 @NgModule({
     declarations: [

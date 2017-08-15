@@ -17,6 +17,7 @@ export class StandingsChartComponent implements OnChanges {
     ngOnChanges(changes: SimpleChanges): void {
         for (let propName in changes) {
             if (propName == "standings" && changes[propName]) {
+                console.log(this.standings);
                 this.createChart();
             }
         }

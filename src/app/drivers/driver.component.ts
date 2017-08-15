@@ -9,6 +9,7 @@ import { log } from "util";
 import "rxjs/add/operator/do";
 import { IStanding } from "../standings/standing";
 import { DriverStandingsService } from "./driver-standings.service";
+import { ICache, TimedCache } from "../util/timed-cache";
 
 @Component({
     selector: 'app-driver',
@@ -22,10 +23,12 @@ export class DriverComponent implements OnInit {
     driverStandings: IStanding[];
     errorText: string;
 
+    private static readonly _cache: TimedCache<IStanding[]> = new TimedCache<IStanding[]>();
+
     constructor(private _http: Http,
         private _activatedRoute: ActivatedRoute,
-        router: Router) {
-        router.events.subscribe((e: NavigationStart) => {
+        private _router: Router) {
+        _router.events.subscribe((e: NavigationStart) => {
             this.driver = null;
             this.imageUrl = null;
             this.driverStandings = null;
@@ -77,11 +80,15 @@ export class DriverComponent implements OnInit {
     }
 
     private getDriverStandings(driver: IDriver): void {
-        let driverStandingsService: DriverStandingsService = new DriverStandingsService(this._http, driver);
-        driverStandingsService.getDriverStandings()
-            .subscribe((standings: IStanding[]) => {
-                this.driverStandings = standings
-            },
-        error => this.errorText = error.toString());
+        let driverStandingsService: DriverStandingsService = new DriverStandingsService(this._http, DriverComponent._cache, driver);
+
+        let subscription = driverStandingsService.getDriverStandings()
+            .subscribe((standings: IStanding[]) =>
+                this.driverStandings = standings,
+            error => this.errorText = error.toString()
+            );
+
+        // Cancel loading if we naigate away
+        this._router.events.subscribe((e: NavigationStart) => subscription.unsubscribe());
     }
 }
