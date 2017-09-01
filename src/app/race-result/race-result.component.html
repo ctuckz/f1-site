@@ -1,0 +1,20 @@
+<div>
+  <div *ngIf="round && results">
+    <table class="table table-striped">
+      <thead>
+        <th>Position</th>
+        <th>Driver</th>
+        <th>Status</th>
+        <th>Starting Position</th>
+        <th>Change</th>
+      </thead>
+      <tr *ngFor="let result of results">
+        <td>{{result.position}} <span *ngIf="result.position != result.positionText">({{result.positionText}})</span></td>
+        <td><a [routerLink]="'/drivers/' + result.Driver.driverId">{{result.Driver.givenName}} {{result.Driver.familyName}}</a></td>
+        <td>{{result.status}}</td>
+        <td>{{result.grid}}</td>
+        <td [class]="getPositionChangeCSS(result)">{{getPositionChange(result)}}</td>
+      </tr>
+    </table>
+  </div>
+</div>

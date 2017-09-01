@@ -13,6 +13,7 @@ import { DriversComponent } from './drivers/drivers.component';
 import { DriverAlphaSortPipe } from './drivers/driver-alpha-sort.pipe';
 import { DriverComponent } from './drivers/driver.component';
 import { TimedCache } from "./util/timed-cache";
+import { RaceResultComponent } from './race-result/race-result.component';
 
 @NgModule({
     declarations: [
@@ -26,7 +27,8 @@ import { TimedCache } from "./util/timed-cache";
         StandingsChartComponent,
         DriversComponent,
         DriverAlphaSortPipe,
-        DriverComponent
+        DriverComponent,
+        RaceResultComponent
     ],
     imports: [
         BrowserModule,
