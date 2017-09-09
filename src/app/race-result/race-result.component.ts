@@ -22,7 +22,7 @@ export class RaceResultComponent implements OnChanges {
         if (changes["round"] && !this.results) {
             let raceResultService = new RaceResultService(this.round, this._http);
             let raceResultSubscription = new PagedServiceSubscription<IResult[]>(raceResultService,
-                (response: IResult[]) => this.results = response,
+                (response: IResult[]) => !this.results ? this.results = response : this.results.concat(response),
                 (error: any) => this.errorText = error.toString());
             raceResultSubscription.loadPage(0);
         }
@@ -47,7 +47,7 @@ export class RaceResultComponent implements OnChanges {
         else if (change < 0) {
             return "text-success";
         }
-        else{
+        else {
             return "text-danger";
         }
     }

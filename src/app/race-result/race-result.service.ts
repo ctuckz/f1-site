@@ -14,6 +14,10 @@ export class RaceResultService extends PagedService<IResult[]> {
     }
 
     protected mapFunction(response: Response, index: number): IResult[] {
-        return <IResult[]>response.json().MRData.RaceTable.Races[0].Results;
+        if (response.json().MRData.RaceTable.Races[0]) {
+            return <IResult[]>response.json().MRData.RaceTable.Races[0].Results;
+        }
+
+        return new Array<IResult>(0);
     }
 }
