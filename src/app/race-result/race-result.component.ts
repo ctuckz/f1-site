@@ -2,7 +2,7 @@ import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/cor
 import { PagedServiceSubscription } from "../util/PagedServiceSubscription";
 import { RaceResultService } from "./race-result.service";
 import { Http } from "@angular/http";
-import { IResult } from "../results/Result";
+import { IResult } from "../results/result";
 
 @Component({
     moduleId: module.id,

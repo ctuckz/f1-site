@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { PagedService } from "../util/PagedService";
 import { Http, Response } from "@angular/http";
-import { IResult } from "../results/Result";
+import { IResult } from "../results/result";
 
 @Injectable()
 export class RaceResultService extends PagedService<IResult[]> {
