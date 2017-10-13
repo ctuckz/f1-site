@@ -10,7 +10,7 @@ export class RaceResultService extends PagedService<IResult[]> {
     constructor(round: string, http: Http) {
         super(http);
 
-        this._url = "http://ergast.com/api/f1/current/" + round + "/results.json";
+        this._url = "http://localhost:8000/api/f1/current/" + round + "/results.json";
     }
 
     protected mapFunction(response: Response, index: number): IResult[] {

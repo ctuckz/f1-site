@@ -4,6 +4,7 @@ import { PagedService } from "../util/PagedService";
 import { Http, Response } from "@angular/http";
 import { ICircuit } from "./circuit";
 import { ISeason } from "../seasons/season";
+import { Server } from '../util/server';
 
 @Injectable()
 export class RaceScheduleService extends PagedService<IRace[]> {
@@ -13,7 +14,7 @@ export class RaceScheduleService extends PagedService<IRace[]> {
     constructor(http: Http, season: string, round: string) {
         super(http);
 
-        this._url = "http://ergast.com/api/f1/" + season + "/" + round + ".json";
+        this._url = Server.baseUrl + "/api/f1/" + season + "/" + round + ".json";
     }
 
     protected mapFunction(response: Response, index: number): IRace[] {

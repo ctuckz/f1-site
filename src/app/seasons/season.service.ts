@@ -9,11 +9,12 @@ import "rxjs/add/observable/empty";
 import "rxjs/add/observable/of";
 import { ErrorObservable } from "rxjs/observable/ErrorObservable";
 import { PagedService } from "../util/PagedService";
+import { Server } from '../util/server';
 
 @Injectable()
 export class SeasonService extends PagedService<ISeason[]> {
 
-    protected _url: string = "http://ergast.com/api/f1/seasons.json";
+    protected _url: string = Server.baseUrl + "/api/f1/seasons.json";
 
     constructor(_http: Http) {
         super(_http);

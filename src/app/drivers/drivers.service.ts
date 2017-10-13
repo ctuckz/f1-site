@@ -2,13 +2,14 @@ import { Injectable } from '@angular/core';
 import { IDriver } from "./driver";
 import { PagedService } from "../util/PagedService";
 import { Http, Response } from "@angular/http";
+import { Server } from '../util/server';
 
 @Injectable()
 export class DriversService extends PagedService<IDriver[]> {
     protected _url: string;
 
-    private _noFilterUrl: string = "http://ergast.com/api/f1/drivers.json";
-    private _urlBase: string = "http://ergast.com/api/f1/";
+    private _noFilterUrl: string = Server.baseUrl + "/api/f1/drivers.json";
+    private _urlBase: string = Server.baseUrl + "/api/f1/";
     private _urlEnd: string = "/drivers.json";
 
     constructor(http: Http);

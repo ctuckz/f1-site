@@ -6,13 +6,14 @@ import { ErrorObservable } from "rxjs/observable/ErrorObservable";
 import "rxjs/add/operator/map";
 import "rxjs/add/operator/catch";
 import { PagedService } from "../util/PagedService";
+import { Server } from '../util/server';
 
 @Injectable()
 export class SeasonStandingsService extends PagedService<IStanding[]> {
 
     protected _url: string;
 
-    private standingUrlBase: string = "http://ergast.com/api/f1/";
+    private standingUrlBase: string = Server.baseUrl + "/api/f1/";
     private standingUrlEnd: string = "/driverStandings.json";
 
     constructor(http: Http,

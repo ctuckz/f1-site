@@ -5,12 +5,13 @@ import { IDriver } from "./driver";
 import { Http, Response } from "@angular/http";
 import { Observable } from "rxjs/Observable";
 import { ICache, TimedCache } from "../util/timed-cache";
+import { Server } from '../util/server';
 
 @Injectable()
 export class DriverStandingsService {
 
     private url: string;
-    private standingUrlBase: string = "http://ergast.com/api/f1/drivers/"
+    private standingUrlBase: string = Server.baseUrl + "/api/f1/drivers/"
     private standingUrlEnd: string = "/driverStandings.json";
 
     private readonly cacheKey: string;
