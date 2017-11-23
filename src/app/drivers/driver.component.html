@@ -1,9 +1,9 @@
 <div *ngIf="errorText" class="alert alert-danger">
     {{errorText}}
 </div>
-<div class="container-fluid" *ngIf="driver">
+<div class="container" *ngIf="driver">
     <div class="col-md-offset-1">
-        <div class="container-fluid row">
+        <div>
             <h1 class="text-warning">{{driver.permanentNumber}}</h1>
             <h1>{{driver.givenName +" " + driver.familyName}}</h1>
 
@@ -11,7 +11,7 @@
                 <img *ngIf="imageUrl" [src]="imageUrl" width="200px" />
             </span>
 
-            <span class="col-md-3">
+            <span class="row col-md-3">
                 <table class="table">
                     <tr>
                         <td>Date of Birth</td>
